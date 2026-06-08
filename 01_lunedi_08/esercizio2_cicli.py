@@ -6,9 +6,9 @@
 """
 #chiedo un numero
 controllo= True
+numeri = [];
 while controllo:
     numero = int(input("Inserisci un numero: "))
-    numeri = [];
     if numero % 2 == 0:
         print("il numero è pari")
         numeri.append(numero)
