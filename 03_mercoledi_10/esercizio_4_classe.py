@@ -29,43 +29,49 @@ class Garage:
     
     def __eq__(self, altro):
         return self.targa == altro.targa
+    
+    """def __str__(self):
+        return "Auto presenti nel garage ", """
         
     def parcheggia(self, targa):
-        for auto in self.auto_presenti:
-            if len(self.auto_presenti) >= self.capienza: #da rivedere, non ho capito la differenza con __len__
-                print("Hai raggiunto la capienza massima")
-            if targa in self.auto_presenti: # in è il contains 
-                print("Auto già in garage")
+        if len(self.auto_presenti) >= self.capienza: #da rivedere, non ho capito la differenza con __len__
+            print("Hai raggiunto la capienza massima")
+            return False
+        if targa in self.auto_presenti: # in è il contains 
+            print("Auto già in garage")
+            return False
                 
-            self.auto_presenti.append(targa)  # non fa append, da verificare  
+        self.auto_presenti.append(targa)  # non fa append, da verificare  
         return True
     
     def rimuovi(self, targa):
-        for auto in self.auto_presenti:
-            if targa == auto.targa:
-                indice = self.auto_presenti.index(auto) # prendo l'indice dell'auto
-                self.auto_presenti.remove(indice) 
-                return True
-            else:
-                print("L'auto non è presente")
-                return False
+        if targa in self.auto_presenti: # in controlla in automatico la targa in una lista quindi non uso for ma if
+            #indice = self.auto_presenti.index(auto) # prendo l'indice dell'auto
+            self.auto_presenti.remove(targa) 
+            return True
+        else:
+            print("L'auto non è presente")
+            return False
     
     def posti_liberi(self):
         return print("Posti disponibili", self.capienza - len(self.auto_presenti))
     
-garage = []    
+garage = []   
+ 
 garage1 = Garage(4)
-garage1.parcheggia("CV223FJ") # non mi funziona l'append
-print(garage1.auto_presenti)
+garage1.parcheggia("CV223FJ")
 
 garage2 = Garage(6)
 
 garage.append(garage1)
 garage.append(garage2)
+    
+print("auto presenti nel garage 1", garage1.auto_presenti)
+print("auto presenti nel garage 2", garage2.auto_presenti)
 
-for g in garage:
-    for auto in g.auto_presenti:
-        print(auto.targa)
-
+"""for g in garage:
+    for targa in g.auto_presenti:
+        print(targa)"""
+        
 garage1.posti_liberi();
 garage2.posti_liberi();

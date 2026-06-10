@@ -20,13 +20,19 @@ class ContoCorrente:
     def deposita(self, importo_da_depositare):
         if importo_da_depositare <=0:
              print("Devi inserire un importo valido")
+             return self.saldo
+         
         self.saldo += importo_da_depositare
+        
         return self.saldo
     
     def preleva(self, importo_da_prelevare):
-        if importo_da_prelevare <=0 and self.saldo < importo_da_prelevare:
-             print("Devi inserire un importo valido oppure saldo insufficiente")
+        if importo_da_prelevare <=0 or self.saldo < importo_da_prelevare:
+            print("Devi inserire un importo valido oppure saldo insufficiente")
+            return self.saldo
+              
         self.saldo -= importo_da_prelevare
+        
         return self.saldo
     
     def stampa(self):
@@ -47,7 +53,7 @@ conti_correnti.append(c4)
 
 #for conto in conti_correnti:
 #   print(conto.intestatario)
-nr_conto = random.randint(1, len(conti_correnti))
+nr_conto = random.randint(0, len(conti_correnti)-1)
 conto = conti_correnti[nr_conto]
 
 controllo = True
