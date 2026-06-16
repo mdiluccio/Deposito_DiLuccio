@@ -6,6 +6,7 @@ class Inventario:
         self.articoli = []
         
     def stampa_inventario(self):
+        print("\nLISTA DEGLI ARITCOLI\n")
         for articolo in self.articoli:
               print("Inventario - Articolo", articolo.nome, "Prezzo", articolo.prezzo, "Quantità", articolo.quantita)
               
